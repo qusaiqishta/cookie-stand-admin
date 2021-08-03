@@ -4,7 +4,7 @@ export default function Careers() {
     return (
         <div className="">
           <Head>
-          <title>Careers Page</title>
+          <title>Overview Page</title>
           <link rel="icon" href="/favicon.ico" />
           </Head>
         
