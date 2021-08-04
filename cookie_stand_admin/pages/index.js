@@ -1,33 +1,21 @@
-// import Head from 'next/head'
-// import Link from 'next/link'
-import Header from '../components/header.js';
-import Head from '../components/head.js';
-import Footer from '../components/footer.js';
-import Table from '../components/table.js';
-import Form from '../components/main.js'
-
-
-import { useState } from 'react';
-
-
+import Head from '../components/head'
+import Header from '../components/header'
+import Form from '../components/main'
+import Table from '../components/table'
+import Footer from '../components/footer'
+import { useState } from 'react'
 
 export default function Home() {
-  
-
-
-    const [cookieStands, setCookieStands] = useState([]);
-    const [totalPerHour, setTotalPerHour] = useState(0);
-    
-
-    
-    
-    
-    return (
-      <div>
-      <Head title='Cookie Stand Admin'/>
-      <Header title='Cookie Stand Admin'/>
-      <Footer cookieStandArr={cookieStands}/>
-      <Form cookieStands={cookieStands} setCookieStands={setCookieStands} totalPerHour={totalPerHour} setTotalPerHour={setTotalPerHour}  />
+  const [totalPerHour, setTotalPerHour] = useState(0);
+  const [cookieStands, setCookieStands] = useState([])
+ 
+  return (
+    <div>
+      <Head title ="Cookies Stand Admin"/>
+      <Header title ="Cookies Stand Admin"/>
+      <Form cookieStands={cookieStands} setCookies={setCookieStands} totalPerHour={totalPerHour} setTotalPerHour={setTotalPerHour}  />
       <Table stands={[cookieStands, totalPerHour]}/>
-      </div>   
-      )}
+      <Footer cookieStandArr={cookieStands}/>
+    </div>
+  )
+}

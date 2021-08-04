@@ -1,41 +1,65 @@
 import avgCookiesPerHour from '/data'
 
-export default function Table(){
-    return(
-        <table space-x-4 className="w=1/2 mx-auto my-4">
-          <thead>
-            <tr>
-            <th className="border border-green-600">Location</th>
-              <th className="space-x-4 border border-green-600">7am</th>
-              <th className="border border-green-600">8am</th>
-              <th className="border border-green-600">9am</th>
-              <th className="border border-green-600">10am</th>
-              <th className="border border-green-600">11am</th>
-              <th className="border border-green-600">12pm</th>
-              <th className="border border-green-600">1pm</th>
-              <th className="border border-green-600">2pm</th>
-              <th className="border border-green-600">3pm</th>
-              <th className="border border-green-600">4pm</th>
-              <th className="border border-green-600">5pm</th>
-              <th className="border border-green-600">6pm</th>
-              <th className="border border-green-600">7pm</th>
-              <th className="border border-green-600">Totals</th>
-            </tr>
-          </thead>
-          <tbody>
-          {
-              setCookieStands.map(item => {
-                return(
-                  <tr>
-                    <td className="border border-blue-600 gap-y-4">{item.location}</td>
-                    <td className="border border-blue-600">{item}</td>
-                    <td className="border border-blue-600">{item.avgCookiesPerHour}</td>
-                    <td className="border border-blue-600">{item.avgCookiesPerHour}</td>
-                  </tr>
-                )
-              })
-            }
-          </tbody>
-        </table>
+export default function ReportTable({ stands }) {
+    
+    return  (
+    <div>
+        {stands[0].length >0 ?
+        
+            <div className="text-center text-gray-700">
+                <center>
+                <table className="border-2">
+                    <thead className="border-2" >
+                        <tr className="border-2">
+                        <th className="border border-green-600">Location</th>
+                        <th className="space-x-4 border border-green-600">7am</th>
+                        <th className="border border-green-600">8am</th>
+                        <th className="border border-green-600">9am</th>
+                        <th className="border border-green-600">10am</th>
+                        <th className="border border-green-600">11am</th>
+                        <th className="border border-green-600">12pm</th>
+                        <th className="border border-green-600">1pm</th>
+                        <th className="border border-green-600">2pm</th>
+                        <th className="border border-green-600">3pm</th>
+                        <th className="border border-green-600">4pm</th>
+                        <th className="border border-green-600">5pm</th>
+                        <th className="border border-green-600">6pm</th>
+                        <th className="border border-green-600">7pm</th>
+                        <th className="border border-green-600">Totals</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+    
+                        {stands[0].map(cookie =>
+                            <tr key={cookie.location}>
+                                <td className="border-2"> {cookie.location} </td>
+                                {cookie.avgCookiesPerHour.map((value,i) =>
+                                    <td key={'value'+i}> {value} </td>
+                                )}
+                                <td>{cookie.avgCookiesPerHour.reduce((a, b) => a+b)}</td>
+                            </tr>
+                   )}
+    
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td className="border-2">Totals</td>
+                                    {avgCookiesPerHour[0].avgCookiesPerHour.map((_,i) => {
+    
+                                        const acum = stands[0].reduce((acc, cur) => acc + cur.avgCookiesPerHour[i], 0);
+                                        return(<td key={i+stands[0].length}>{acum}</td>)
+                                    }
+    
+                                    )}
+                            <td>{stands[1]}</td>
+                        </tr>
+                    </tfoot>
+                </table>
+                </center>
+            </div>
+        : 
+            (<h2> <center> No Cookie Stands Available </center> </h2>)
+    }
+    </div>
     )
 }
