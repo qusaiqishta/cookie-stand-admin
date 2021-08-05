@@ -1,6 +1,8 @@
-export default function Footer(props){
-    return(
-        <footer className="items-center p-4 text-gray-100 bg-green-500 my-50">
-          <h3>{props.cookieStandArr.length} Locations World Wide</h3>
-        </footer>)
+export default function Footer(props) {
+
+  return (
+      <footer className="absolute bottom-0 w-full px-5 py-2 bg-green-500">
+          <p>{props.cookieStandArr.length} Locations World Wide</p>
+      </footer>
+  )
 }

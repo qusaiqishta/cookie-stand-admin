@@ -14,24 +14,23 @@ export default function CreateForm(props) {
         let totalCookiePerHour = Math.floor(getRandomCust(min, max) * avg);
         avgCookiesPerHour.push(totalCookiePerHour)
       }
+      // console.log(props)
       props.setTotalPerHour((props.totalPerHour + avgCookiesPerHour.reduce((a, b) => a + b)))
       return avgCookiesPerHour
     }
   
   
-    
-  function cookiesHandler(event){
-    event.preventDefault();
-    
-    const location = {
-      location: event.target.location.value,
-     
-      avgCookiesPerHour: getAvgCookiesPerHour(e.target.minCustomers.value, e.target.maxCustomers.value, e.target.avgCookies.value),
+    const cookiesHandler = e => {
+      e.preventDefault();
+      const result =
+      {
+        'location': e.target.location.value,
+        'avgCookiesPerHour': getAvgCookiesPerHour(e.target.minCustomers.value, e.target.maxCustomers.value, e.target.avgCookies.value),
+      }
+      props.setCookies([...props.cookieStands, result]);
+      e.target.reset();
     }
-    props.setCookieStands([...cookieStands,location]);
-    event.target.reset();
 
-  }
 
 
   return (
