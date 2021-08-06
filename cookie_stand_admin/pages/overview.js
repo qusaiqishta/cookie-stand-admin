@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Head from 'next/head'
-export default function Careers() {
+export default function Overview() {
     return (
         <div className="">
           <Head>
