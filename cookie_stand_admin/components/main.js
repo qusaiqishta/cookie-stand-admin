@@ -24,8 +24,8 @@ export default function CreateForm(props) {
       e.preventDefault();
       const result =
       {
-        'location': e.target.location.value,
-        'avgCookiesPerHour': getAvgCookiesPerHour(e.target.minCustomers.value, e.target.maxCustomers.value, e.target.avgCookies.value),
+         location: e.target.location.value,
+         avgCookiesPerHour: getAvgCookiesPerHour(e.target.minCustomers.value, e.target.maxCustomers.value, e.target.avgCookies.value),
       }
       props.setCookies([...props.cookieStands, result]);
       e.target.reset();
